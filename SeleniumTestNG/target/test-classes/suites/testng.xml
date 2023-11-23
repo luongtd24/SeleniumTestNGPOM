@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="First Suite" verbose="1">
+    <test name="First Test">
+        <classes>
+            <class name="com.luongtd.Bai10_Annotations.DemoAnnotations">
+                <methods>
+                    <include name="testsOfDemoAnnotations" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
