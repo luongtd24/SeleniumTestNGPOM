@@ -3,7 +3,7 @@
 <suite name="First Suite" verbose="1">
     <test name="First Test">
         <classes>
-            <class name="com.luongtd.Bai10_Annotations.DemoAnnotations">
+            <class name="com.luongtd.Bai10_Annotations.DemoAnnotation">
                 <methods>
                     <include name="testsOfDemoAnnotations" />
                 </methods>

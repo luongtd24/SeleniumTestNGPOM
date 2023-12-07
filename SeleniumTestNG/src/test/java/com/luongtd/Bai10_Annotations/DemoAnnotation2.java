@@ -14,22 +14,22 @@ public class DemoAnnotation2 {
         System.out.println("After Class");
     }
 
-    @BeforeGroups(groups = { "testOne" })
+    @BeforeGroups(groups = {"testOne"})
     public void beforeGroupOne() {
         System.out.println("Before Group testOne 2");
     }
 
-    @AfterGroups(groups = { "testOne" })
+    @AfterGroups(groups = {"testOne"})
     public void afterGroupOne() {
         System.out.println("After Group testOne 2");
     }
 
-    @BeforeGroups(groups = { "testTwo" })
+    @BeforeGroups(groups = {"testTwo"})
     public void beforeGroupTwo() {
         System.out.println("Before Group testTwo");
     }
 
-    @AfterGroups(groups = { "testTwo" })
+    @AfterGroups(groups = {"testTwo"})
     public void afterGroupTwo() {
         System.out.println("After Group testTwo");
     }
@@ -44,12 +44,12 @@ public class DemoAnnotation2 {
         System.out.println("After Method");
     }
 
-    @Test(groups = { "testOne" }, priority = 3)
+    @Test(groups = {"testOne"}, priority = 3)
     public void testThreeMethod() {
         System.out.println("Test method 3");
     }
 
-    @Test(groups = { "testTwo" }, priority = 4)
+    @Test(groups = {"testTwo"}, priority = 4)
     public void testFourMethod() {
         System.out.println("Test method 4");
     }

@@ -3,7 +3,7 @@ package com.luongtd.Bai10_Annotations;
 import com.luongtd.common.BaseTest;
 import org.testng.annotations.*;
 
-public class DemoAnnotations extends BaseTest {
+public class DemoAnnotation extends BaseTest {
 
     @BeforeSuite
     public void beforeSuite() {
