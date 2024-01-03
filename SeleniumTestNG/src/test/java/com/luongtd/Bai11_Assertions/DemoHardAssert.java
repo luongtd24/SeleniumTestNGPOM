@@ -27,6 +27,6 @@ public class DemoHardAssert extends BaseTest {
 
         String menuName = driver.findElement(By.xpath("//span[normalize-space()='Customers']")).getText();
         Assert.assertTrue(menuName.contains("Customer"));   // so sanh chua thong qua java
-        Assert.
+        //Assert.
     }
 }
