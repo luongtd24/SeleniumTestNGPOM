@@ -55,9 +55,75 @@ public class Bai12_DemoActionsClass extends BaseTest {
         driver.get("https://anhtester.com/");
         sleep(3);
 
-        WebElement element = driver.findElement(By.xpath(""))
+        WebElement element = driver.findElement(By.xpath("//div[@class='col-lg-7']//h2[@class='section__title'][contains(text(),'Anh Tester')]"));
+        Actions actions = new Actions(driver);
+
+        actions.contextClick(element).perform();
+        sleep(2);
 
     }
+    @Test
+    public void moveToElement(){
+        driver.get("https://anhtester.com/");
+        sleep(2);
+        WebElement element = driver.findElement(By.xpath("//a[@id='btn-login']"));
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
+        sleep(2);
+    }
+
+    @Test
+    public void demoDragandDropWithActionClass(){
+        driver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
+        sleep(2);
+        WebElement From = driver.findElement(By.xpath("(//div[contains(text(),'Stockholm')])[2]"));
+        sleep(2);
+        WebElement To = driver.findElement(By.xpath("(//div[normalize-space()='Norway'])[1]"));
+        sleep(2);
+
+        Actions actions = new Actions(driver);
+        actions.dragAndDrop(From, To).perform();
+        sleep(2);
+    }
+    @Test
+    public void inputTextUppercase() throws InterruptedException {
+        driver.get("https://www.google.com/");
+        Thread.sleep(2000);
+        WebElement element = driver.findElement(By.xpath("//*[@name='q']"));
+        element.click();
+
+        Actions action = new Actions(driver);
+
+        // Đè giữ phím SHIFT và nhập text -> Chữ in hoa
+        action.keyDown(element, Keys.SHIFT).sendKeys("anh tester").build().perform();
+
+        Thread.sleep(2000);
+    }
+    @Test
+    public void copyAndPate(){
+        driver.get("https://anhtester.com/");
+        sleep(2);
+
+        WebElement element1 = driver.findElement(By.xpath("(//input[@placeholder='Tìm kiếm khóa học . . .'])[1]"));
+        element1.click();
+        WebElement element2 = driver.findElement(By.xpath("(//input[@placeholder='Bạn muốn học gì?'])[1]"));
+        sleep(3);
+        Actions actions = new Actions(driver);
+
+        actions.sendKeys("Nam 2024").perform();
+        sleep(2);
+        actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
+        sleep(1);
+        actions.keyDown(Keys.CONTROL).sendKeys("c").keyUp(Keys.CONTROL).perform();
+        sleep(1);
+
+        element2.click();
+        sleep(1);
+        actions.keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).perform();
+        sleep(3);
 
 
+
+    }
 }
