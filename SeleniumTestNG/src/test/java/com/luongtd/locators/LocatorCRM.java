@@ -15,7 +15,7 @@ public class LocatorCRM {
     public static String menuDashboard = "//span[normalize-space()='Dashboard']";
 
     //Customers List
-    public static String buttonAddNewCustomer = "//a[normalize-space()='New Customer']";
+    public static String buttonAddNewCustomer = "(//a[normalize-space()='New Customer'])[1]";
     public static String buttonImportCustomers = "//a[normalize-space()='Import Customers']";
     public static String buttonContacts = "//a[contains(@href,'clients/all_contacts')]";
     public static String headerCustomersPage = "//span[normalize-space()='Customers Summary']";
