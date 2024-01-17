@@ -1,6 +1,7 @@
 package com.luongtd.thuchanh;
 
 import com.luongtd.common.BaseTest;
+import com.luongtd.keywords.ActionKeywords;
 import com.luongtd.locators.LocatorCRM;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,16 +13,28 @@ import org.testng.asserts.SoftAssert;
 import java.time.temporal.ChronoUnit;
 
 public class AddnewCustomer extends BaseTest {
-    @Test
-    public void testAddNewCustomer() {
-        String CompanyName = "Selenium LG";
+    String CompanyName = "Selenium LG";
+
+    public void loginCRM(){
         driver.get("https://crm.anhtester.com/admin/authentication");
-        Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.headerLoginPage)).isDisplayed(), "Khong phai trang Login");
-        driver.findElement(By.xpath(LocatorCRM.inputEmail)).sendKeys("admin@example.com");
-        driver.findElement(By.xpath(LocatorCRM.inputPassword)).sendKeys("123456");
-        driver.findElement(By.xpath(LocatorCRM.buttonLogin)).click();
+        Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.headerLoginPage)).isDisplayed(), "Header khong ton tai, Khong phai trang Login");
+//        driver.findElement(By.xpath(LocatorCRM.inputEmail)).sendKeys("admin@example.com");
+//        driver.findElement(By.xpath(LocatorCRM.inputPassword)).sendKeys("123456");
+//        driver.findElement(By.xpath(LocatorCRM.buttonLogin)).click();
+
+        setText(LocatorCRM.inputEmail, "admin@example.com");
+        setText(LocatorCRM.inputPassword, "123456");
+        clickElement(LocatorCRM.buttonLogin);
         sleep(1);
         Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.menuDashboard)).isDisplayed(), "Khong den duoc trang Dashboard");
+    }
+
+
+    @Test
+    public void testAddNewCustomer() {
+        // Khoi tao doi tuong class cho ActionsKeywords de nhan gia tri driver
+        loginCRM();
+        new ActionKeywords(driver);
 
         //Add new Customer va kiem tra xem giao dien hien thi dung khong
         driver.findElement(By.xpath(LocatorCRM.menuCustomers)).click();
@@ -80,5 +93,34 @@ public class AddnewCustomer extends BaseTest {
         softAssert.assertEquals(driver.findElement(By.xpath(LocatorCRM.inputWebsite)).getAttribute("value"),"https://anhtester.com","Gia tri Website khong dung");
 
         softAssert.assertAll();
+    }
+
+    @Test
+    public void addNewContactForCustomer(){
+     loginCRM();
+     driver.findElement(By.xpath(LocatorCRM.menuCustomers)).click();
+     Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.headerCustomersPage)).isDisplayed(), "Khong den duoc trang Customer");
+     Assert.assertEquals(driver.findElement(By.xpath(LocatorCRM.headerCustomersPage)).getText(), "Customers Summary", "Khong den duoc trang Customer");
+     sleep(2);
+
+    //Search lai Customer vua Add New
+    driver.findElement(By.xpath(LocatorCRM.menuCustomers)).click();
+    driver.findElement(By.xpath(LocatorCRM.inputSearchCustomers)).sendKeys(CompanyName);
+    sleep(1);
+    Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.firstItemCustomersOnTable)).isDisplayed(),"Khoong tim thay Customers");
+    driver.findElement(By.xpath(LocatorCRM.firstItemCustomersOnTable)).click();
+
+    driver.findElement(By.xpath(LocatorCRM.menuContact)).click();
+    sleep(1);
+    Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.headerContactPage)).isDisplayed(), "Không tìm thấy trang Contact.");
+    driver.findElement(By.xpath(LocatorCRM.buttonAddNewContact)).click();
+    sleep(2);
+    Assert.assertTrue(driver.findElement(By.xpath(LocatorCRM.headerAddNewContactDialog)).isDisplayed(), "Không tìm thấy dialog Add New Contact.");
+    sleep(1);
+    //Upload file for Profile image
+    driver.findElement(By.xpath(LocatorCRM.inputProfileImage)).sendKeys(System.getProperty("user.dir") + "\\src\\test\\resources\\datatest\\photo_2023-06-22_22-17-58.jpg");
+    sleep(2);
+
+
     }
 }

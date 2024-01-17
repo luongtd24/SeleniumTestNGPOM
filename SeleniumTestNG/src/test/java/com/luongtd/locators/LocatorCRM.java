@@ -42,6 +42,25 @@ public class LocatorCRM {
     public static String buttonSaveAndCreateContact = "//button[normalize-space()='Save and create contact']";
     public static String buttonSave = "//div[@id='profile-save-section']//button[normalize-space()='Save']";
 
+    //Contact Page
+    public static String menuContact = "//a[normalize-space()='Contacts']";
+    public static String headerContactPage = "//h4[normalize-space()='Contacts']";
+    public static String buttonAddNewContact = "//a[normalize-space()='New Contact']";
+    public static String inputSearchContact = "//div[@id='DataTables_Table_0_filter']//input[@type='search'] ";
+    public static String headerAddNewContactDialog = "//h4[normalize-space()='Add new contact']";
+    public static String inputProfileImage = "//input[@id='profile_image']";
+    public static String inputFirstName = "//input[@id='firstname']";
+    public static String inputLastName = "//input[@id='lastname']";
+    public static String inputPosition = "//input[@id='title']";
+    public static String inputEmailContact = "//input[@id='email']";
+    public static String inputPhoneContact = "//input[@id='phonenumber']";
+    public static String buttonGeneratePassword = "//a[@class='generate_password']";
+    public static String buttonShowPassword = "//a[@class='show_password']";
+    public static String inputPasswordContact = "//input[@name='password']";
+    public static String checkboxDoNotSendEmail = "//input[@id='donotsendwelcomeemail']";
+    public static String buttonSaveContact = "//form[@id='contact-form']//button[normalize-space()='Save']";
+
+
     //Project List
     public static String buttonAddNewProject = "//a[normalize-space()='New Project']";
     public static String inputSearchProjects = "//div[@id='DataTables_Table_0_filter']//input[@type='search']";
